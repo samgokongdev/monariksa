@@ -1,6 +1,6 @@
 <div>
     <div class="flex w-full space-x-4">
-        <div class="w-1/2 bg-white shadow-md p-4 rounded-lg">
+        <div class="w-3/5 bg-white shadow-md p-4 rounded-lg">
             <h4 class="font-semibold text-xl">Daftar Pemeriksaan JT < 30 Hari</h4>
                     <div class="pt-4">
                         <code
@@ -16,7 +16,7 @@
                                             | *JT : {{ date('d M Y', strtotime($t->jt)) }}*
                                         </span>
                                         <span class="text-blue-500">
-                                            | {{ $t->kt }}
+                                            | Ketua Tim : {{ $t->kt }}
                                         </span>
                                     </span>
                                 @endforeach
@@ -24,7 +24,7 @@
                         </code>
                     </div>
         </div>
-        <div class="w-1/2">
+        <div class="w-2/5">
             <div class="grid grid-cols-2 gap-4">
                 <div class="bg-white py-4 px-8 flex flex-col space-y-4 rounded-lg shadow-md">
                     <span class="font-semibold text-sm text-gray-700">Total Tunggakan</span>

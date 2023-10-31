@@ -66,9 +66,48 @@
                 </select>
             </div>
 
+            @if ($show_kontribusi)
+                @auth
+                    <div class="space-y-1 flex flex-col w-full mt-8 ">
+                        <div class="flex flex-col mb-4">
+                            <label class="font-medium text-lg">Masukkan Data Kontribusi</label>
+                            <label>NP2</label>
+                            <input value="{{ $np2s }}"
+                                class="bg-white p-2 border-gray-900 ring-1 ring-gray-300 font-medium text-gray-800 pl-2 rounded-md" />
+                            <label>Kontribusi Ketua Tim</label>
+                            <input value="{{ $k1 }}" wire:model = 'k1'
+                                class="bg-white p-2 border-gray-900 ring-1 ring-gray-300 font-medium text-gray-800 pl-2 rounded-md" />
+                            <label>Kontribusi Anggota 1</label>
+                            <input value="{{ $k2 }}" wire:model = 'k2'
+                                class="bg-white p-2 border-gray-900 ring-1 ring-gray-300 font-medium text-gray-800 pl-2 rounded-md" />
+                            <label>Kontribusi Anggota 2</label>
+                            <input value="{{ $k3 }}" wire:model = 'k3'
+                                class="bg-white p-2 border-gray-900 ring-1 ring-gray-300 font-medium text-gray-800 pl-2 rounded-md" />
+                            <label>Kontribusi Anggota 3</label>
+                            <input value="{{ $k4 }}" wire:model = 'k4'
+                                class="bg-white p-2 border-gray-900 ring-1 ring-gray-300 font-medium text-gray-800 pl-2 rounded-md" />
+                        </div>
+                        <div class="flex mt-8 w-full space-x-4">
+                            <a class="bg-green-500 w-1/2 hover:bg-green-600 cursor-pointer text-white font-semibold rounded-lg px-4 py-2 border-green-700 border-2"
+                                wire:click ="update()">Update</a>
+                            <a class="bg-red-500 w-1/2 hover:bg-red-600 cursor-pointer text-white font-semibold rounded-lg px-4 py-2 border-red-700 border-2"
+                                wire:click ="cancel()">Cancel</a>
+                        </div>
+
+                    </div>
+                @else
+                    <div class="mt-5">
+                        <label class="font-bold text-red-700">Anda bukan admin.. Silahkan Login Untuk Mengisi Data
+                            Kontribusi</label>
+                    </div>
+                @endauth
+            @endif
+
+
 
         </div>
     </aside>
+
     <section class="w-4/6">
         <div>
             <span class="font-bold text-xl">Data Laporan Hasil Pemeriksaan</span>
@@ -88,14 +127,14 @@
 
             <div class="mt-4 space-y-4">
                 @foreach ($lhps as $l)
-                    <div>
-
+                    <div wire:click="edit({{ "'" . $l->np2 . "'" }})" class="cursor-pointer hover:scale-95">
                         <div class="px-8 py-4 rounded-t-md bg-white flex justify-between items-center shadow-md">
                             <div class="flex flex-col">
                                 <span class="font-semibold text-xl">{{ $l->nama_wp }}</span>
                                 <span class="text-gray-500">{{ $l->npwp }}</span>
                                 <span class="mt-4 font-bold text-lg">{{ $l->lhp }}</span>
-                                <span class="font-semibold text-base text-gray-500">Tanggal : {{ $l->tgl_lhp }}</span>
+                                <span class="font-semibold text-base text-gray-500">Tanggal :
+                                    {{ date('d M Y', strtotime($l->tgl_lhp)) }}</span>
                             </div>
                             <div class="flex flex-col">
                                 <span class="font-bold">{{ $l->jenis_rik }} ({{ $l->kode_rik }})</span>
@@ -126,6 +165,7 @@
                             :
                             {{ $l->spv }}{{ !$l->kt ? '' : ", $l->kt" }}{{ !$l->ang1 ? '' : ", $l->ang1" }}{{ !$l->ang2 ? '' : ", $l->ang2" }}
                         </div>
+
                     </div>
                 @endforeach
             </div>

@@ -174,7 +174,7 @@
                         </div>
                         <div class="mt-4 font-medium text-sm text-gray-500">
                             Tim Pemeriksa :
-                            {{ $t->spv }}{{ !$t->kt ? '' : ", $t->kt" }}{{ !$t->ang1 ? '' : ", $t->ang1" }}{{ !$t->ang2 ? '' : ", $t->ang2" }}
+                            {{ $t->spv }}{{ !$t->kt ? '' : ", $t->kt" }}{{ !$t->ang1 ? '' : ", $t->ang1" }}{{ !$t->ang2 ? '' : ", $t->ang2" }}{{ !$t->ang3 ? '' : ", $t->ang3" }}
                         </div>
                         <div
                             class="flex items-center space-x-2 mt-2 {{ !$t->tgl_sppl ? 'text-gray-500' : 'text-orange-500' }}">
