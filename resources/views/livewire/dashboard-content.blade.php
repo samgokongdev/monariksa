@@ -55,6 +55,16 @@
                     <span class="font-semibold text-sm text-gray-700">Jumlah SP2 Belum Disampaikan</span>
                     <span class="font-semibold text-2xl">{{ $total_belum_sppl->count() }} SP2</span>
                 </div>
+
+                <div class="bg-white py-4 px-8 flex flex-col space-y-4 rounded-lg shadow-md">
+                    <span class="font-semibold text-sm text-gray-700">PKM PEMERIKSAAN</span>
+                    <span class="font-semibold text-xl">{{ number_format($pkm_pemeriksaan, 2, ',', '.') }}</span>
+                </div>
+
+                <div class="bg-white py-4 px-8 flex flex-col space-y-4 rounded-lg shadow-md">
+                    <span class="font-semibold text-sm text-gray-700">PKM PENAGIHAN</span>
+                    <span class="font-semibold text-xl">{{ number_format($pkm_penagihan, 2, ',', '.') }}</span>
+                </div>
             </div>
         </div>
     </div>

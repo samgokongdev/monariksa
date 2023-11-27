@@ -163,7 +163,7 @@
 
                             Tim Pemeriksa
                             :
-                            {{ $l->spv }}{{ !$l->kt ? '' : ", $l->kt" }}{{ !$l->ang1 ? '' : ", $l->ang1" }}{{ !$l->ang2 ? '' : ", $l->ang2" }}
+                            {{ $l->spv }}{{ !$l->kt ? '' : ", $l->kt" }}{{ !$l->ang1 ? '' : ", $l->ang1" }}{{ !$l->ang2 ? '' : ", $l->ang2" }}{{ !$l->ang3 ? '' : ", $l->ang3" }}
                         </div>
 
                     </div>
