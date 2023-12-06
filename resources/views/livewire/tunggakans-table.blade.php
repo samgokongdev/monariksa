@@ -31,6 +31,17 @@
             </select>
         </div>
 
+        <div class="space-y-1 mt-2 flex flex-col w-full ">
+            <label class="font-medium text-sm">Tahun Pajak</label>
+            <select wire:model.live='th_pajak'
+                class="bg-white p-2 border-gray-900 ring-1 ring-gray-300 font-medium text-gray-800 pl-2 rounded-md">
+                <option value="">SEMUA</option>
+                @foreach ($tp as $t)
+                    <option value="{{ $t->th_pajak }}">{{ $t->th_pajak }}</option>
+                @endforeach
+            </select>
+        </div>
+
         <div class="mt-5 font-semibold">Status SP2</div>
         <div class="space-y-1 flex items-center space-x-2">
             <input wire:model.live='is_sp2' type="radio" id="semua" name="is_sp2" value="">
@@ -115,7 +126,8 @@
                             <div>
                                 <div class="text-gray-500 text-sm">Kode Rik : <span
                                         class="font-semibold">{{ $t->kode_rik }}</span></div>
-                                <div class="text-sm text-gray-500">Periode : {{ $t->periode_1 }} - {{ $t->periode_2 }}
+                                <div class="text-sm text-gray-500">Periode : {{ $t->periode_1 }} -
+                                    {{ $t->periode_2 }}
                                 </div>
                                 <div class="text-sm text-gray-500 font-semibold">{{ $t->jenis_rik }}</div>
                             </div>

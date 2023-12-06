@@ -12,7 +12,7 @@ class TunggakansTable extends Component
     use WithPagination;
 
     public $perPage = 5;
-
+    public $th_pajak = "";
     public $search = "";
     public $filterspv = "";
     public $filterkt = "";
@@ -46,6 +46,9 @@ class TunggakansTable extends Component
                             ->when($this->filterkt !== "", function($query){
                                 $query->where("kt", $this->filterkt);
                             })
+                            ->when($this->th_pajak !== "", function($query){
+                                $query->where("th_pajak", $this->th_pajak);
+                            })
                             ->when($this->is_sp2 !== "", function($query){
                                 $query->where("is_sp2", $this->is_sp2);
                             })
@@ -59,7 +62,11 @@ class TunggakansTable extends Component
                                 $query->where("is_focus_audit", $this->is_fa);
                             })
                             ->orderBy($this->sortby, $this->orderby)
-                            ->paginate($this->perPage)
+                            ->paginate($this->perPage),
+            'tp'        => Tunggakan::select('th_pajak')
+                            ->distinct()
+                            ->orderBy('th_pajak','DESC')
+                            ->get()
         ]);
     }
 }

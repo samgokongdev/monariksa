@@ -9,7 +9,8 @@ use Livewire\Component;
 use Livewire\WithPagination;
 class LhpList extends Component
 {
-    public $tahun_lhp = "2023";
+    public $tahun_lhp = "";
+    public $tahun_pajak = "";
     public $search = "";
     public $perPage = 5;
     public $cek_tepat_waktu = "";
@@ -79,6 +80,9 @@ class LhpList extends Component
                     ->when($this->tahun_lhp !== "", function($query){
                         $query->where("tahun_lhp", $this->tahun_lhp);
                     })
+                    ->when($this->tahun_pajak !== "", function($query){
+                        $query->where("tahun_pajak", $this->tahun_pajak);
+                    })
                     ->when($this->up2 !== "", function($query){
                         $query->where("up2", $this->up2);
                     })
@@ -90,7 +94,12 @@ class LhpList extends Component
                     })
                     ->paginate($this->perPage),
             'fpp' => Vlhp::select('spv')
-                    ->where('tahun_lhp',$this->tahun_lhp)
+                    ->when($this->tahun_lhp !== "", function($query){
+                        $query->where("tahun_lhp", $this->tahun_lhp);
+                    })
+                    ->when($this->tahun_pajak !== "", function($query){
+                        $query->where("tahun_pajak", $this->tahun_pajak);
+                    })
                     ->where('spv','!=',"")
                     ->when($this->select_kt !== "", function($query){
                         $query->where("kt", $this->select_kt);
@@ -98,13 +107,29 @@ class LhpList extends Component
                     ->distinct()
                     ->get(),
             'kt' => Vlhp::select('kt')
-                    ->where('tahun_lhp',$this->tahun_lhp)
+                    ->when($this->tahun_lhp !== "", function($query){
+                        $query->where("tahun_lhp", $this->tahun_lhp);
+                    })
+                    ->when($this->tahun_pajak !== "", function($query){
+                        $query->where("tahun_pajak", $this->tahun_pajak);
+                    })
                     ->where('kt','!=',"")
                     ->when($this->select_spv !== "", function($query){
                         $query->where("spv", $this->select_spv);
                     })
                     ->distinct()
-                    ->get()      
+                    ->get(),
+            'tp' => Vlhp::select('tahun_pajak')
+                    ->when($this->tahun_lhp !== "", function($query){
+                        $query->where("tahun_lhp", $this->tahun_lhp);
+                    })
+                    ->where('kt','!=',"")
+                    ->when($this->select_spv !== "", function($query){
+                        $query->where("spv", $this->select_spv);
+                    })
+                    ->distinct()
+                    ->orderBy('tahun_pajak','DESC')
+                    ->get()          
         ]);
     }
 }
