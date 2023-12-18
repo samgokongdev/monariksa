@@ -152,6 +152,9 @@
                                 <span class="font-bold">{{ $l->jenis_rik }} ({{ $l->kode_rik }})</span>
                                 <span class="text-gray-500">Periode : {{ $l->periode_1 }} s.d.
                                     {{ $l->periode_2 }}</span>
+                                <span class="text-gray-500 text-sm">SPHP No : {{ $l->sphp }}</span>
+                                <span class="text-gray-500 text-sm">Tanggal :
+                                    {{ date('d M Y', strtotime($l->tgl_sphp)) }}</span>
                             </div>
                             <div class="flex flex-col text-center">
                                 <span class="text-gray-500 font-semibold">Konversi</span>

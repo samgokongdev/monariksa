@@ -10,6 +10,8 @@ use Livewire\WithPagination;
 class Konversi extends Component
 {
     public $selected_fpp = "";
+    public $perPage = 5;
+    public $search = "";
     use WithPagination;
 
     public function render()
@@ -24,10 +26,11 @@ class Konversi extends Component
                                 $query->where("fpp", $this->selected_fpp);
                             })
                             ->sum('konversi_tertimbang'),
-            'daftars' =>  ModelsKonversi::when($this->selected_fpp !== "", function($query){
+            'daftars' =>  ModelsKonversi::search($this->search)
+                            ->when($this->selected_fpp !== "", function($query){
                                 $query->where("fpp", $this->selected_fpp);
                             })
-                            ->paginate(5)
+                            ->paginate($this->perPage)
         ]);
     }
 }

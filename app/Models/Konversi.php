@@ -10,4 +10,8 @@ class Konversi extends Model
     use HasFactory;
 
     protected $table = 'konversis';
+
+    public function scopeSearch($query,$value){
+        $query->where('nama_wp','like',"%{$value}%");
+    }
 }

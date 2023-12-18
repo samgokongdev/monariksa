@@ -89,6 +89,7 @@
                     class="bg-white py-4 w-1/2 border-gray-900 ring-1 ring-gray-300 font-medium text-gray-800 px-2 rounded-md">
                     <option value="jt">JT Normal</option>
                     <option value="jt_8_bulan">JT 8 Bulan</option>
+                    <option value="sphp">SPHP</option>
                 </select>
                 <select wire:model.live='orderby'
                     class="bg-white py-4 w-1/2 border-gray-900 ring-1 ring-gray-300 font-medium text-gray-800 px-2 rounded-md">
@@ -121,7 +122,10 @@
                         <div class="flex justify-between items-center">
                             <div>
                                 <div class="font-bold text-lg">{{ $t->nama_wp }}</div>
-                                <div class="text-sm text-gray-500">{{ $t->npwp }}</div>
+                                <div class="text-sm text-gray-500">NPWP : {{ $t->npwp }}</div>
+                                <div class="text-sm text-gray-500"> NP2 :
+                                    {{ substr($t->np2, 0, 3) }}.{{ substr($t->np2, 3, 3) }}.{{ substr($t->np2, 6, 4) }}.{{ substr($t->np2, 10, 4) }}.{{ substr($t->np2, 14, 5) }}
+                                </div>
                             </div>
                             <div>
                                 <div class="text-gray-500 text-sm">Kode Rik : <span

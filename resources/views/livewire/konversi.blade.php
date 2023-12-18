@@ -32,8 +32,27 @@
             <div>
                 <div class="flex flex-col w-full space-y-3 mt-2">
                     @if ($selected_fpp !== '')
+
                         <div class="py-4">
                             {{ $daftars->links() }}
+                        </div>
+                        <div class="grid grid-cols-2">
+                            <div class="py-4 flex space-x-3">
+                                <label>Per Page</label>
+                                <select wire:model.live='perPage'
+                                    class="bg-white border-gray-900 ring-1 ring-gray-300 font-medium text-gray-800 text-center px-2 rounded-md">
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                    <option value="25">25</option>
+                                </select>
+                            </div>
+                            <div class="space-y-2">
+                                <input type="text"
+                                    class="bg-white border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-gray-300 w-full px-4 py-4"
+                                    placeholder="Masukkan Nama WP" required=""
+                                    wire:model.live.debounce.300ms ='search'>
+                            </div>
                         </div>
                         @foreach ($daftars as $d)
                             <div class="bg-white w-full px-4 py-4 rounded-lg">
