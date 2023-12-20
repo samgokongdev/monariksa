@@ -142,11 +142,14 @@
                     <div>
                         <div class="px-8 py-4 rounded-t-md bg-white flex justify-between items-center shadow-md">
                             <div class="flex flex-col">
+                                <span class="font-semibold text-sm text-gray-500">
+                                    {{ substr($l->np2, 0, 3) }}.{{ substr($l->np2, 3, 3) }}.{{ substr($l->np2, 6, 4) }}.{{ substr($l->np2, 10, 4) }}.{{ substr($l->np2, 14, 5) }}</span>
                                 <span class="font-semibold text-xl">{{ $l->nama_wp }}</span>
                                 <span class="text-gray-500">{{ $l->npwp }}</span>
                                 <span class="mt-4 font-bold text-lg">{{ $l->lhp }}</span>
                                 <span class="font-semibold text-base text-gray-500">Tanggal :
-                                    {{ date('d M Y', strtotime($l->tgl_lhp)) }}</span>
+                                    {{ date('d M Y', strtotime($l->tgl_lhp)) }} | JT :
+                                    {{ date('d M Y', strtotime($l->jt)) }}</span>
                             </div>
                             <div class="flex flex-col">
                                 <span class="font-bold">{{ $l->jenis_rik }} ({{ $l->kode_rik }})</span>
