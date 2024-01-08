@@ -15,6 +15,7 @@
                     <select wire:model.live='tahun_lhp'
                         class="bg-white p-2 border-gray-900 ring-1 ring-gray-300 font-medium text-gray-800 pl-2 rounded-md">
                         <option value="">Semua</option>
+                        <option value="2024">2024</option>
                         <option value="2023">2023</option>
                         <option value="2022">2022</option>
                         <option value="2021">2021</option>

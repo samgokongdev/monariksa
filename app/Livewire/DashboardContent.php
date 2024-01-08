@@ -16,7 +16,7 @@ class DashboardContent extends Component
     public $total_konversi = [];
     public $pkm_pemeriksaan;
     public $pkm_penagihan;
-    public $year = 2023;
+    public $year = 2024;
 
     public function mount()
     {
@@ -24,9 +24,9 @@ class DashboardContent extends Component
         $this->total_tunggakan_fa = Tunggakan::where('is_focus_audit',true)->get();
         $this->total_sudah_alokasi_belum_sp2 = Tunggakan::where('is_sp2',false)->get();
         $this->total_belum_sppl = Tunggakan::where('is_sp2',true)->where('is_sppl',false)->get();
-        $this->total_konversi = Vlhp::where('up2',"=","056")->where('tahun_lhp',2023)->get();
-        $this->pkm_pemeriksaan = Penerimaan::where('FG_PKM','=','PKM PEMERIKSAAN')->sum('JUMLAH_BAYAR_IDR');
-        $this->pkm_penagihan = Penerimaan::where('FG_PKM','=','PKM PENAGIHAN')->sum('JUMLAH_BAYAR_IDR');
+        $this->total_konversi = Vlhp::where('up2',"=","056")->where('tahun_lhp',$this->year)->get();
+        $this->pkm_pemeriksaan = Penerimaan::where('FG_PKM','=','PKM PEMERIKSAAN')->whereYear('TANGGAL_BAYAR',$this->year)->sum('JUMLAH_BAYAR_IDR');
+        $this->pkm_penagihan = Penerimaan::where('FG_PKM','=','PKM PENAGIHAN')->whereYear('TANGGAL_BAYAR',$this->year)->sum('JUMLAH_BAYAR_IDR');
     }
 
     public function render()
